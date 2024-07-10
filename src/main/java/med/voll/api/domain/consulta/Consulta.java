@@ -1,10 +1,7 @@
 package med.voll.api.domain.consulta;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import med.voll.api.domain.direccion.Direccion;
 import med.voll.api.domain.medico.Especialidad;
 import med.voll.api.domain.medico.Medico;
@@ -33,5 +30,15 @@ public class Consulta {
     private Paciente paciente;
 
     private LocalDateTime fecha;
+
+    private boolean activo;
+    @Setter
+    @Enumerated(EnumType.STRING)
+    private Motivo motivo;
+
+    public void desactivarConsulta() {
+        this.activo = false;
+    }
+
 }
 
